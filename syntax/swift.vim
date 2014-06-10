@@ -52,12 +52,15 @@ syn match swiftFloat   "\<[0-9]\+\.[0-9]\+\%([eE][-+]\?[0-9]\+\)\?\>"
 syn match swiftFloat   "\<0x\x\+[pP][-+]\?\x\+\>"
 syn match swiftFloat   "\<0x\x\+\.\x\+\%([pP][-+]\?\x\+\)\?\>"
 
+" TODO: fix the pattern: 'for touch: AnyObject in touches'
 syn match swiftParameter "[[:alnum:]]\+\s*:"
 
 syn match swiftDeclaration "\%(var\|let\)\@<=\s\+\zs[^=;]\+" contains=swiftType
 syn match swiftType "\%(:\s*\)\@<=[[:alnum:]]\+" contained
 
-syn region swiftFunctionDefinition start="\%(func\s*\)\@<=[^(]\+(" end=")" contains=swiftType
+" TODO: fix return type in closures as in pattern:
+" 'reversed = sort(names, { (s1: String, s2: " String) -> Bool in return s1 > s2 } )'
+syn region swiftFunctionDefinition start="\%(func\s*\)\@<=[^(]\+(" end=")" contains=swiftType,swiftModifier
 syn region swiftFunctionReturn start="\%(->\)\@<=\s*" end="{" contains=swiftReturnType
 syn match swiftReturnType "[[:alnum:]]\+" contained
 
@@ -72,7 +75,7 @@ hi def link swiftStatement         Statement
 hi def link swiftBuiltin           Function
 hi def link swiftBuiltinType       swiftBuiltin
 hi def link swiftSpecial           Special
-hi def link swiftModifier          Type
+hi def link swiftModifier          Keyword
 hi def link swiftOperator          Operator
 hi def link swiftInteger           Number
 hi def link swiftFloat             Number
