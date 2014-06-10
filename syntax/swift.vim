@@ -8,7 +8,7 @@ if exists("b:current_syntax")
 endif
 
 syn match swiftOperator "->"
-syn keyword swiftOperator in
+syn keyword swiftOperator as in is
 
 syn match swiftComment  "\%(^\s*\)\@<=//.*"
 syn region swiftComment start="/\*" end="\*/" contains=swiftComment
@@ -28,10 +28,11 @@ syn keyword swiftInclude import
 syn keyword swiftStatement break case continue default do else fallthrough if
 syn keyword swiftStatement for return switch where while
 
-syn keyword swiftBuiltin as dynamicType false is new nil super self Self true
-syn keyword swiftBuiltin Type
+syn keyword swiftBuiltin assert dynamicType false new nil print println self
+syn keyword swiftBuiltin Self sort super true Type
 
-syn keyword swiftBuiltinType Array Bool Dictionary Double Float String
+syn keyword swiftBuiltinType AnyObject
+syn keyword swiftBuiltinType Array Bool Character Dictionary Double Float String
 syn keyword swiftBuiltinType Int Int8 Int16 Int32 Int64
 syn keyword swiftBuiltinType UInt UInt8 UInt16 UInt32 UInt64
 
